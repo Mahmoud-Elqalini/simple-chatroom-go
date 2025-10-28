@@ -1,61 +1,123 @@
-# Simple Chatroom (Go RPC)
+# 🗨️ Simple Chatroom (Go RPC)
 
-## Description
-This project implements a **simple chatroom** using **Go and RPC (Remote Procedure Call)**.  
-It allows multiple clients to send messages to a coordinating server and fetch the **chat history**.  
+## 📖 Description
+This project implements a **simple multi-client chatroom** using **Go and RPC (Remote Procedure Call)**.  
+It allows multiple clients to connect to a central server, exchange messages, and automatically share join/leave notifications.
 
 The chatroom works as a **text-based console application**.
 
 ---
 
-## Features
-- **Client**
-  - Connects to the server via RPC.
-  - Sends messages to the server.
-  - Receives the full chat history after sending each message.
-  - Runs in a loop until the user types `"exit"` or presses `Ctrl+C`.
-  - Reads full lines including spaces.
+## 🚀 Features
 
-- **Server**
-  - Stores all messages in a list.
-  - Returns the full chat history to clients upon receiving a message.
-  - Handles multiple clients sequentially using TCP and RPC.
+### 🧠 Server
+- Handles multiple clients over TCP using RPC.
+- Stores all messages in a shared history.
+- Broadcasts join and leave notifications automatically.
+- Returns the full chat history to each client after sending a message.
+
+### 💬 Client
+- Connects to the server via RPC.
+- Sends and receives messages in real time.
+- Displays the full chat history after each message.
+- Supports graceful exit using the `exit` command.
+- Shows messages like:
+  ```
+  [Server]: Mahmoud has joined the chat.
+  [Server]: Mahmoud has left the chat.
+  ```
 
 ---
 
-## Folder Structure
+## 🗂️ Folder Structure
 ```
 project/
 │
-├── server.go        # Chat server code
-├── client.go        # Chat client code
-├── go.mod
+├── server.go        # Chat server logic (handles Join, Leave, SendMessage)
+├── client.go        # Chat client logic (connects and communicates via RPC)
+├── commons/
+│   └── commons.go   # Shared data structures (MessageArgs)
+├── go.mod           # Go module file
+├── .gitignore       # Git ignore configuration
+└── README.md        # Project documentation
 ```
 
 ---
 
-## How to Run
+## ⚙️ How to Run
 
-1. **Start the Server**
+### 1️⃣ Start the Server
 ```bash
 go run server.go
 ```
-2. **Start the Client**
+
+### 2️⃣ Start the Client (in a new terminal)
 ```bash
 go run client.go
 ```
-3. **Use the Chat**
-- Type a message and press Enter.
-- Type `exit` to quit the chat client.
+
+### 3️⃣ Interact with the Chat
+- Type your message and press **Enter**.
+- Type **exit** to leave the chatroom.
+- When a user joins or leaves, everyone sees a server message.
 
 ---
 
-## Notes
-- The server must be running before starting the client.
-- Multiple clients can connect and send messages.
-- Chat history is displayed after sending each message.
-- The client uses `bufio.Reader` to read full lines including spaces.
+## 🧩 Example Output
 
-## Demo Video
+**Client 1 (Mahmoud):**
+```
+Enter your name: Mahmoud
+Welcome, Mahmoud 👋
+Your message: Hello everyone!
 
-- Watch the running application here:
+--- Chat History ---
+[Server]: Mahmoud has joined the chat.
+Mahmoud: Hello everyone!
+--------------------
+Your message: exit
+You have left the chat. Goodbye!
+```
+
+**Client 2 (Sara):**
+```
+Enter your name: Sara
+Welcome, Sara 👋
+Your message: Hi Mahmoud!
+
+--- Chat History ---
+[Server]: Mahmoud has joined the chat.
+Mahmoud: Hello everyone!
+[Server]: Sara has joined the chat.
+Sara: Hi Mahmoud!
+--------------------
+```
+
+After Mahmoud leaves:
+```
+[Server]: Mahmoud has left the chat.
+```
+
+---
+
+## 🧠 Technical Notes
+- Uses **net/rpc** and **TCP** for communication.
+- Handles each request sequentially.
+- Chat messages and system notifications are stored in a slice of strings.
+- Compatible with multiple simultaneous clients.
+
+---
+
+## 🎥 Demo Video
+🔗 Watch the running application demo here: *(Add your video link here)*
+
+---
+
+## 👨‍💻 Author
+**Mahmoud Hamdi**  
+Third-year Computer Engineering Student @ Tanta University  
+Passionate about software engineering, data science, and backend systems.
+
+---
+
+⭐ *If you like this project, consider giving it a star on GitHub!* ⭐
