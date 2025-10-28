@@ -29,6 +29,7 @@ project/
 │
 ├── server.go        # Chat server code
 ├── client.go        # Chat client code
+├── go.mod
 ```
 
 ---
