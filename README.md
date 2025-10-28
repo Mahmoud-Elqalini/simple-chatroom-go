@@ -8,7 +8,7 @@ The chatroom works as a **text-based console application**.
 
 ---
 
-## 🚀 Features
+## Features
 
 ### 🧠 Server
 - Handles multiple clients over TCP using RPC.
@@ -23,8 +23,8 @@ The chatroom works as a **text-based console application**.
 - Supports graceful exit using the `exit` command.
 - Shows messages like:
   ```
-  [Server]: Mahmoud has joined the chat.
-  [Server]: Mahmoud has left the chat.
+  Mahmoud has joined the chat.
+  Mahmoud has left the chat.
   ```
 
 ---
@@ -36,7 +36,7 @@ project/
 ├── server.go        # Chat server logic (handles Join, Leave, SendMessage)
 ├── client.go        # Chat client logic (connects and communicates via RPC)
 ├── commons/
-│   └── commons.go   # Shared data structures (MessageArgs)
+│   └── args.go   # Shared data structures (MessageArgs)
 ├── go.mod           # Go module file
 ├── .gitignore       # Git ignore configuration
 └── README.md        # Project documentation
@@ -72,7 +72,7 @@ Welcome, Mahmoud 👋
 Your message: Hello everyone!
 
 --- Chat History ---
-[Server]: Mahmoud has joined the chat.
+Mahmoud has joined the chat.
 Mahmoud: Hello everyone!
 --------------------
 Your message: exit
@@ -86,16 +86,16 @@ Welcome, Sara 👋
 Your message: Hi Mahmoud!
 
 --- Chat History ---
-[Server]: Mahmoud has joined the chat.
+Mahmoud has joined the chat.
 Mahmoud: Hello everyone!
-[Server]: Sara has joined the chat.
+Sara has joined the chat.
 Sara: Hi Mahmoud!
 --------------------
 ```
 
 After Mahmoud leaves:
 ```
-[Server]: Mahmoud has left the chat.
+Mahmoud has left the chat.
 ```
 
 ---
@@ -109,15 +109,14 @@ After Mahmoud leaves:
 ---
 
 ## 🎥 Demo Video
-🔗 Watch the running application demo here: *(Add your video link here)*
+🔗 Watch the running application demo here: *([Add your video link here](https://drive.google.com/file/d/1J20QXFc4HrKfLxk7Yg01Jix3WCX6hF42/view?usp=drive_link))*
 
 ---
 
 ## 👨‍💻 Author
 **Mahmoud Hamdi**  
-Third-year Computer Engineering Student @ Tanta University  
-Passionate about software engineering, data science, and backend systems.
+Computer Engineering Student @ Tanta University  
+Passionate about software engineering, data science, and AI.
 
 ---
 
-⭐ *If you like this project, consider giving it a star on GitHub!* ⭐

@@ -44,7 +44,7 @@ func (l *Listener) Join(name string, reply *bool) error {
 
 	if !l.Clients[name] { // Only if not already joined
 		l.Clients[name] = true
-		systemMsg := fmt.Sprintf("[Server]: %s has joined the chat.", name)
+		systemMsg := fmt.Sprintf("%s has joined the chat.", name)
 		l.Messages = append(l.Messages, systemMsg)
 		fmt.Println(systemMsg)
 	}
@@ -60,7 +60,7 @@ func (l *Listener) Leave(name string, reply *bool) error {
 
 	if l.Clients[name] {
 		delete(l.Clients, name)
-		leaveMsg := fmt.Sprintf("[Server]: %s has left the chat.", name)
+		leaveMsg := fmt.Sprintf("%s has left the chat.", name)
 		l.Messages = append(l.Messages, leaveMsg)
 		fmt.Println(leaveMsg)
 	}
