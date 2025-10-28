@@ -1,4 +1,4 @@
-# 🗨️ Simple Chatroom (Go RPC)
+# Simple Chatroom (Go RPC)
 
 ## 📖 Description
 This project implements a **simple multi-client chatroom** using **Go and RPC (Remote Procedure Call)**.  
@@ -100,7 +100,7 @@ Mahmoud has left the chat.
 
 ---
 
-## 🧠 Technical Notes
+## Technical Notes
 - Uses **net/rpc** and **TCP** for communication.
 - Handles each request sequentially.
 - Chat messages and system notifications are stored in a slice of strings.
